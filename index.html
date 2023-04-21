@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="form">
+        <input type="text" id="searchName" placeholder="Enter Movie Name">
+        <input type="submit" id="submitName" onclick="return submitMovieName()">
+    </div>
+
+    <div id="allMovieDetail">
+        <img src="" id="moviePoster">
+        <div id="movieContent">
+            <div id="nameRating">
+                <h1 id="movieName"></h1>
+                <div id="ratingsIcon">
+                    <h3 id="movieRating"></h3>
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.3 489.9">
+                            <path d="M0.1,188.7c3-9.4,7.9-17.7,17.8-20.5c7.8-2.1,16-2.6,24.1-3.4c41.9-3.9,83.8-7.6,125.7-11.3c3.4-0.3,5.1-1.6,6.5-4.8c18.3-43.3,36.9-86.4,55.3-129.7c3.7-8.8,9.4-15.3,18.7-17.9c13.7-3.9,26.9,2.7,32.9,16.5c12.5,29.1,24.9,58.3,37.4,87.5c6.3,14.7,12.6,29.3,18.7,44c1.2,2.8,2.7,4.1,5.7,4.4c30.8,2.7,61.6,5.5,92.4,8.2c16.9,1.5,33.8,3.1,50.7,4.7c11.8,1.1,20,7.4,23.7,18.5c3.8,11.6,0.5,21.7-8.6,29.7c-35.3,31.1-70.7,62.1-106.2,93c-3.2,2.8-4.4,5.2-3.4,9.6c10.6,45.8,21,91.6,31.4,137.5c2.7,12-0.1,22.3-10.2,29.7c-10.1,7.3-20.7,7-31.3,0.6c-40.4-24.1-80.7-48.2-121-72.5c-3.4-2.1-5.9-2.1-9.3,0c-40.1,24.2-80.4,48.2-120.6,72.2c-13.6,8.1-28.3,6-37.2-5.3c-5.6-7.2-7-15.3-5-24c10.4-45.8,20.8-91.7,31.4-137.5c1.1-4.7,0.2-7.4-3.4-10.5c-35.3-30.6-70.3-61.6-105.5-92.3c-5.2-4.5-8.2-10.2-10.5-16.5C0.1,195.4,0.1,192,0.1,188.7z"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <p id="releaseTime">
+                <span id="movieRelease"></span>
+                <span id="movieTime"></span>
+            </p>
+            <h4>Overview</h4>
+            <p id="movieAbout"></p>
+            <ul id="movieDetail">
+                <li>Actors<span id="actorName"></span></li>
+                <li>Writer<span id="writerName"></span></li>
+                <li>Director<span id="directorName"></span></li>
+                <li>Genre<span id="genreName"></span></li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        function submitMovieName(){
+
+            var mName = document.getElementById("searchName").value;
+
+            document.getElementById("allMovieDetail").setAttribute("class","active")
+
+            $.ajax({
+                url: `https://www.omdbapi.com/?t=${mName}&apikey=7d8701fa`,
+                // url: `https://www.omdbapi.com/?t=avengers&apikey=7d8701fa`,
+                type: "GET",
+                success: function movieData(movieDetail){
+                    // console.log(movieDetail);
+                    $("#moviePoster").attr("src",movieDetail.Poster);
+                    $("#movieName").html(movieDetail.Title);
+                    $("#movieRating").html(movieDetail.Ratings[0].Value);
+                    $("#movieRelease").html(movieDetail.DVD);
+                    $("#movieTime").html(movieDetail.Runtime);
+                    $("#movieAbout").html(movieDetail.Plot);
+                    $("#actorName").html(movieDetail.Actors);
+                    $("#writerName").html(movieDetail.Writer);
+                    $("#directorName").html(movieDetail.Director);
+                    $("#genreName").html(movieDetail.Genre);
+                }
+            });
+
+        }
+
+    </script>
+
+
+</body>
+</html>

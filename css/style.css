@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    box-shadow: none;
+}
+
+body { height: 100vh; overflow: hidden; position: relative; margin: 0 50px; font-family: 'Nunito', sans-serif; background: #833ab4; background: -webkit-linear-gradient(-45deg, #fcb045, #fd1d1d, #833ab4); background: linear-gradient(-45deg, #fcb045, #fd1d1d, #833ab4); }
+
+#allMovieDetail { opacity: 0; transition: all 0.5s ease-in-out; }
+
+#allMovieDetail.active { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; background-color: black; padding: 30px 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; border-radius: 20px; opacity: 1; }
+#allMovieDetail #moviePoster { width: 350px; border-radius: 15px; box-shadow: 0px -1px 20px 5px rgba(131, 58, 180, 0.5); }
+#allMovieDetail #movieContent { width: calc(100% - 450px); }
+#allMovieDetail #movieContent #nameRating { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; margin: 0 0 10px; }
+#allMovieDetail #movieContent #nameRating #movieName { font-size: 42px; font-weight: 700; line-height: 1; background: linear-gradient(45deg, #fcb045, #fd1d1d, #833ab4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+#allMovieDetail #movieContent #nameRating #ratingsIcon { display: flex; flex-wrap: wrap; align-items: center; }
+#allMovieDetail #movieContent #nameRating #ratingsIcon span svg { width: 20px; }
+#allMovieDetail #movieContent #nameRating #ratingsIcon span svg path { fill: #fcb045; }
+#allMovieDetail #movieContent #nameRating #ratingsIcon #movieRating { font-size: 22px; font-weight: 600; line-height: 1; color: white; margin: 0 10px 0 0; }
+
+#allMovieDetail #movieContent #releaseTime span:first-child { font-size: 16px; font-weight: 400; line-height: 1; color: white; padding: 0 11px 0 0; border-right: 1px solid white; opacity: 0.5; }
+#allMovieDetail #movieContent #releaseTime span:last-child { font-size: 16px; font-weight: 400; line-height: 1; color: white; padding: 0 0 0 10px; opacity: 0.5; }
+
+#allMovieDetail #movieContent h4 { font-size: 26px; font-weight: 600; line-height: 1; color: #fd1d1d; margin: 30px 0 15px; }
+#allMovieDetail #movieContent #movieAbout { font-size: 16px; font-weight: 400; line-height: 1.5; color: white; margin: 0 0 20px; width: 90%; }
+#allMovieDetail #movieContent #movieDetail li { display: flex; flex-wrap: wrap; align-items: center; font-size: 16px; font-weight: 500; line-height: 1; color: rgba(255, 255, 255, 0.5); margin: 0 0 15px; }
+#allMovieDetail #movieContent #movieDetail li span { color: white; width: calc(100% - 100px); margin-left: auto; }
+
+#form { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); z-index: 9999; }
+#form #searchName { font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 700; line-height: 1; width: 300px; height: 40px; border: none; padding: 0 20px; border-radius: 8px; background-color: black; color: white; }
+#form #submitName { font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 700; line-height: 1; width: 100px; height: 40px; border: none; border-radius: 8px; background-color: white; color: black; margin: 0 0 0 10px; transition: all 0.5s ease-in-out; }
+#form #submitName:hover { background-color: #fcb045; color: white; }
